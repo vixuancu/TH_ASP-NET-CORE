@@ -1,0 +1,19 @@
+@{
+    ViewData["Title"] = "Thời gian hiện tại";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Thời gian hiện tại</h1>
+    <p class="lead">@ViewBag.CurrentTime</p>
+    <hr />
+    <p>
+        <a class="btn btn-primary" href="@Url.Action("Welcome", "Bail", new { name = "Tester" })">
+            Thử Welcome với tên "Tester"
+        </a>
+    </p>
+    @* <p>
+        <a class="btn btn-secondary" href="@Url.Action("Welcome", "Bail")">
+            Thử Welcome không có tên
+        </a>
+    </p> *@
+</div>

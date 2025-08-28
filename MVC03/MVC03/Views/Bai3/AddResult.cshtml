@@ -1,0 +1,31 @@
+@{
+    ViewData["Title"] = "Kết Quả Phép Cộng";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="text-center">Kết Quả Phép Cộng</h3>
+                </div>
+                <div class="card-body">
+                    <div class="alert alert-success text-center">
+                        <h4>@ViewBag.A + @ViewBag.B = @ViewBag.Result</h4>
+                    </div>
+                    
+                    <div class="text-center">
+                        <p><strong>Chi tiết:</strong></p>
+                        <p>Số thứ nhất: <span class="badge bg-info">@ViewBag.A</span></p>
+                        <p>Số thứ hai: <span class="badge bg-info">@ViewBag.B</span></p>
+                        <p>Tổng: <span class="badge bg-success">@ViewBag.Result</span></p>
+                    </div>
+                </div>
+                <div class="card-footer text-center">
+                    <a href="@Url.Action("Add")" class="btn btn-primary">Tính Lại</a>
+                    <a href="@Url.Action("Index", "Home")" class="btn btn-secondary">Về Trang Chủ</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

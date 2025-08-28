@@ -1,0 +1,37 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="text-center mb-4">Bài Tập 3 - Tính Toán</h2>
+            <div class="row justify-content-center">
+                <div class="col-md-4">
+                    <div class="card mb-3">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Phép Cộng</h5>
+                            <p class="card-text">Tính tổng của hai số nguyên</p>
+                            <a href="@Url.Action("Add", "Bai3")" class="btn btn-primary">Thử Ngay</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card mb-3">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Phép Nhân</h5>
+                            <p class="card-text">Tính tích của hai số (qua URL)</p>
+                            <a href="@Url.Action("Multiply", "Bai3", new { a = 5, b = 3 })" class="btn btn-success">5 ×
+                                3</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
