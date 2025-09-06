@@ -94,3 +94,4 @@ C:\E\TH_ASPMVC\MVC02\MVC02\obj\Debug\net9.0\refint\MVC02.dll
 C:\E\TH_ASPMVC\MVC02\MVC02\obj\Debug\net9.0\MVC02.pdb
 C:\E\TH_ASPMVC\MVC02\MVC02\obj\Debug\net9.0\MVC02.genruntimeconfig.cache
 C:\E\TH_ASPMVC\MVC02\MVC02\obj\Debug\net9.0\ref\MVC02.dll
+C:\E\TH_ASPMVC\MVC02\MVC02\obj\Debug\net9.0\MVC02.sourcelink.json

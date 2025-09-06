@@ -1,0 +1,32 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+
+    <div class="mt-5">
+        <h3>Các chức năng có sẵn:</h3>
+        <div class="row justify-content-center mt-4">
+            <div class="col-md-4 mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Đăng Ký</h5>
+                        <p class="card-text">Form đăng ký với validation username, password và email.</p>
+                        <a href="@Url.Action("Register", "Bai2")" class="btn btn-primary">Đi đến</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Tạo Số Ngẫu Nhiên</h5>
+                        <p class="card-text">Tạo danh sách số ngẫu nhiên trong khoảng cho trước.</p>
+                        <a href="@Url.Action("GetRandomNumbers", "Bai2")" class="btn btn-success">Đi đến</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

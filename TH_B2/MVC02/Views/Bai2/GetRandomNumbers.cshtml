@@ -1,0 +1,84 @@
+@{
+    ViewData["Title"] = "Generate Random Numbers";
+}
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0">Tạo Số Ngẫu Nhiên</h4>
+                </div>
+                <div class="card-body">
+                    @if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+                    {
+                        <div class="alert alert-danger">
+                            @ViewBag.ErrorMessage
+                        </div>
+                    }
+
+                    <form id="randomNumberForm" asp-action="GetRandomNumbers" asp-controller="Bai2" method="post">
+                        <div class="mb-3">
+                            <label for="lb" class="form-label">Lower Bound (Cận dưới):</label>
+                            <input type="number" class="form-control" id="lb" name="lb" min="0" max="255" required />
+                            <div class="invalid-feedback" id="lbError"></div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="ub" class="form-label">Upper Bound (Cận trên):</label>
+                            <input type="number" class="form-control" id="ub" name="ub" min="0" max="255" required />
+                            <div class="invalid-feedback" id="ubError"></div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="n" class="form-label">Số lượng (n):</label>
+                            <input type="number" class="form-control" id="n" name="n" min="1" max="255" required />
+                            <div class="invalid-feedback" id="nError"></div>
+                        </div>
+
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary">Tạo Số Ngẫu Nhiên</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.getElementById('randomNumberForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const lb = parseInt(document.getElementById('lb').value);
+    const ub = parseInt(document.getElementById('ub').value);
+    const n = parseInt(document.getElementById('n').value);
+    
+    let isValid = true;
+    
+    // Reset previous error states
+    document.getElementById('lb').classList.remove('is-invalid');
+    document.getElementById('ub').classList.remove('is-invalid');
+    document.getElementById('n').classList.remove('is-invalid');
+    
+    // Kiểm tra lower bound < upper bound
+    if (lb >= ub) {
+        document.getElementById('lb').classList.add('is-invalid');
+        document.getElementById('ub').classList.add('is-invalid');
+        document.getElementById('lbError').textContent = 'Lower bound phải nhỏ hơn Upper bound';
+        document.getElementById('ubError').textContent = 'Upper bound phải lớn hơn Lower bound';
+        isValid = false;
+    }
+    
+    // Kiểm tra n > 0
+    if (n <= 0) {
+        document.getElementById('n').classList.add('is-invalid');
+        document.getElementById('nError').textContent = 'Số lượng phải lớn hơn 0';
+        isValid = false;
+    }
+    
+    if (isValid) {
+        this.submit();
+    }
+});
+</script>

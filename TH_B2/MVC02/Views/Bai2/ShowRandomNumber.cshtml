@@ -1,0 +1,59 @@
+@model List<int>
+@{
+    ViewData["Title"] = "Random Numbers Result";
+}
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0">Kết Quả Số Ngẫu Nhiên</h4>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <p><strong>Thông tin:</strong></p>
+                        <ul>
+                            <li>Cận dưới (Lower Bound): <span class="badge bg-info">@ViewBag.LowerBound</span></li>
+                            <li>Cận trên (Upper Bound): <span class="badge bg-info">@ViewBag.UpperBound</span></li>
+                            <li>Số lượng: <span class="badge bg-info">@ViewBag.Count</span></li>
+                        </ul>
+                    </div>
+
+                    <div class="mb-4">
+                        <h5>Các số ngẫu nhiên được tạo:</h5>
+                        <div class="row">
+                            @foreach (var number in Model)
+                            {
+                                <div class="col-md-2 col-sm-3 col-4 mb-2">
+                                    <span class="badge bg-primary fs-6 w-100">@number</span>
+                                </div>
+                            }
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <h6>Thống kê:</h6>
+                        <ul class="list-unstyled">
+                            <li>Số nhỏ nhất: <span class="badge bg-success">@Model.Min()</span></li>
+                            <li>Số lớn nhất: <span class="badge bg-warning">@Model.Max()</span></li>
+                            <li>Trung bình: <span class="badge bg-secondary">@Model.Average().ToString("F2")</span></li>
+                        </ul>
+                    </div>
+
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <a href="@Url.Action("GetRandomNumbers", "Bai2")" class="btn btn-outline-primary">
+                            <i class="bi bi-arrow-left"></i> Tạo số mới
+                        </a>
+                        <a href="@Url.Action("Register", "Bai2")" class="btn btn-outline-secondary">
+                            Về trang đăng ký
+                        </a>
+                        <a href="@Url.Action("Index", "Home")" class="btn btn-outline-info">
+                            Về trang chủ
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

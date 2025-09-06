@@ -1,0 +1,82 @@
+@{
+    ViewData["Title"] = "Đăng ký";
+}
+
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+        <h2 class="text-center mb-4">Đăng ký tài khoản</h2>
+        
+        @if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+        {
+            <div class="alert alert-danger" role="alert">
+                @ViewBag.ErrorMessage
+            </div>
+        }
+
+        <form id="registerForm" asp-controller="Bai2" asp-action="Receive" method="post">
+            <div class="mb-3">
+                <label for="username" class="form-label">Username:</label>
+                <input type="text" class="form-control" id="username" name="username" required>
+                <div class="invalid-feedback" id="usernameError"></div>
+            </div>
+
+            <div class="mb-3">
+                <label for="password" class="form-label">Password:</label>
+                <input type="password" class="form-control" id="password" name="password" required>
+                <div class="invalid-feedback" id="passwordError"></div>
+                <small class="form-text text-muted">Password phải có ít nhất 8 ký tự và chứa ít nhất một số.</small>
+            </div>
+
+            <div class="mb-3">
+                <label for="email" class="form-label">Email:</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+                <div class="invalid-feedback" id="emailError"></div>
+            </div>
+
+            <div class="d-grid">
+                <button type="submit" class="btn btn-primary">Đăng ký</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+document.getElementById('registerForm').addEventListener('submit', function(e) {
+    let isValid = true;
+    
+    // Reset previous validation states
+    document.querySelectorAll('.form-control').forEach(input => {
+        input.classList.remove('is-invalid');
+    });
+    
+    // Validate username
+    const username = document.getElementById('username').value.trim();
+    if (username === '') {
+        document.getElementById('username').classList.add('is-invalid');
+        document.getElementById('usernameError').textContent = 'Username không được để trống.';
+        isValid = false;
+    }
+    
+    // Validate password
+    const password = document.getElementById('password').value;
+    const hasNumber = /\d/.test(password);
+    if (password.length < 8 || !hasNumber) {
+        document.getElementById('password').classList.add('is-invalid');
+        document.getElementById('passwordError').textContent = 'Password phải có ít nhất 8 ký tự và chứa ít nhất một số.';
+        isValid = false;
+    }
+    
+    // Validate email
+    const email = document.getElementById('email').value;
+    const emailPattern = /^[a-zA-Z0-9._%+-]+@@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!emailPattern.test(email)) {
+        document.getElementById('email').classList.add('is-invalid');
+        document.getElementById('emailError').textContent = 'Email không đúng định dạng.';
+        isValid = false;
+    }
+    
+    if (!isValid) {
+        e.preventDefault();
+    }
+});
+</script>
